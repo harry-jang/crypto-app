@@ -44,7 +44,6 @@ const Loader = styled.span`
     text-align: center;
 `;
 
-
 interface CoinInterface {
     id: string,
     name: string,
