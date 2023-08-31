@@ -60,18 +60,19 @@ const Tabs = styled.div`
     gap: 10px;
 `;
 
-const Tab = styled.span<{isActive : boolean}>`
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 400;
-    background-color: rgba(0,0,0,0.5);
+const Tab = styled.span<{ $isActive: boolean }>`
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  color: ${(props) =>
+    props.$isActive ? props.theme.accentColor : props.theme.textColor};
+  a {
     padding: 7px 0px;
-    border-radius: 10px;
-    color: ${props => props.isActive ? props.theme.accentColor : props.theme.textColor}
-    a {
-        display: block;
-    }
+    display: block;
+  }
 `;
 
 interface RouteParams {
@@ -184,10 +185,10 @@ function Coin() {
             </Overview>
 
             <Tabs>
-                <Tab isActive={chartMatch !== null}>
+                <Tab $isActive={chartMatch !== null}>
                     <Link to={`/${coinId}/chart`}>Chart</Link>
                 </Tab>
-                <Tab isActive={priceMatch !== null}>
+                <Tab $isActive={priceMatch !== null}>
                     <Link to={`/${coinId}/price`}>Price</Link>
                 </Tab>
             </Tabs>
