@@ -1,4 +1,3 @@
-import { info as infoData } from "console";
 import { useQuery } from "react-query";
 import { Link, Route, Switch, useLocation, useParams, useRouteMatch } from "react-router-dom";
 import { styled } from "styled-components";
@@ -27,6 +26,18 @@ const Title = styled.h1`
 
 const Loader = styled.span`
     text-align: center;
+`;
+
+const BackDiv = styled.div`
+    text-align: right;
+    a {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        border-radius: 10px;
+        margin-top: 10px;
+        display: inline-block;
+        color: ${(props) => props.theme.textColor};
+    }
 `;
 
 const Overview = styled.div`
@@ -162,9 +173,13 @@ function Coin() {
     <Helmet>
         <title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name}</title>   
     </Helmet>
+    <BackDiv>
+        <Link to="/">Back</Link>
+    </BackDiv> 
     <Header>
-        <Title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name}</Title>;
+        <Title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name}</Title>
     </Header>
+     
     {loading ? (<Loader>Loading...</Loader>
     ):(
         <>
@@ -203,8 +218,6 @@ function Coin() {
                 </Tab>
             </Tabs>
             
-            
-
             <Switch>
                 <Route path={`/:coinId/price`}>
                     <Price />
@@ -213,6 +226,8 @@ function Coin() {
                     <Chart coinId={coinId}/>
                 </Route>
             </Switch>
+     
+                 
         </>
     )}
 </Container>;
