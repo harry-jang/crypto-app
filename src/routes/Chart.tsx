@@ -27,11 +27,20 @@ function Chart({coinId} : CharProps) {
         }
         );
     return <div>{isLoading ? "Loading chart..." : (<ApexChart 
-        type="line"
+        type="candlestick"
         series={[
             {
-                name:"Price",
-                data: data?.map((price) => parseFloat(price.close)) ?? [],
+                data: 
+                data?.map((price) => ({
+                    
+                    x: new Date(price.time_close * 1000),           
+                    y: [
+                        parseFloat(price.open),
+                        parseFloat(price.high),
+                        parseFloat(price.low),
+                        parseFloat(price.close),
+                    ]
+                })) ?? [],
             },
         ]}
         options={{
@@ -39,45 +48,28 @@ function Chart({coinId} : CharProps) {
                 mode: "dark"
             },
             chart: {
-                height: 500,
+                type: 'candlestick',
+                height: 350,
                 width: 500,
+                background: "transparent",
                 toolbar:{
                     show: false
                 },
-                background: "transparent",
-            },
-            grid:{
-                show:false
-            },
-            stroke: {
-                curve: "smooth",
-                width: 4,
             },
             yaxis: {
-                show:false,
+                tooltip: {
+                    enabled:true
+                }
             },
             xaxis: {
-                labels:{
-                    show : false,
-                },
-                axisBorder: {
-                    show: false
-                },
-                axisTicks: {
-                    show: false
-                },
                 type:"datetime",
                 categories: data?.map((price) => new Date(price.time_close * 1000).toUTCString()) ?? [],
-            },
-            fill: {
-                type : "gradient",
-                gradient: { gradientToColors: ["#fbc531"], stops: [0, 100]},
-            },
-            colors: ["#e84118"],
-            tooltip: {
-                y: {
-                    formatter: (value) => `${value.toFixed(3)}`
-                }
+                axisBorder: {
+                    show: false,
+                  },
+                  axisTicks: {
+                    show: false,
+                  },
             }
         }}
         />

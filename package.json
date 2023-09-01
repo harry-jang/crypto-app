@@ -54,5 +54,5 @@
     "@types/react-helmet": "^6.1.6",
     "@types/react-router-dom": "^5.3.3"
   },
-  "homepage": "https://harry-jang.github.io/cryto-app"
+  "homepage": "https://harry-jang.github.io/crypto-app"
 }
