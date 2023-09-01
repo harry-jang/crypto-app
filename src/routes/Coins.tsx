@@ -72,7 +72,7 @@ function Coins() {
             <title>코인</title>   
         </Helmet>
         <Header>
-            <Title>코인</Title>;
+            <Title>코인</Title>
         </Header>
         {isLoading ? (<Loader>Loading...</Loader>
         ):(
