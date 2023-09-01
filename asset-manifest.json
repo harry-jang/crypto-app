@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/cryto-app/static/js/main.9f678cd6.js",
+    "index.html": "/cryto-app/index.html",
+    "main.9f678cd6.js.map": "/cryto-app/static/js/main.9f678cd6.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.9f678cd6.js"
+  ]
+}
