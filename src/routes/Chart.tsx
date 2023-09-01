@@ -19,7 +19,13 @@ interface IHistorical{
 }
 
 function Chart({coinId} : CharProps) {
-    const {isLoading, data} = useQuery<IHistorical[]>(["ohlcv", coinId], () => fetchCoinHistory(coinId));
+    const {isLoading, data} = useQuery<IHistorical[]>(
+        ["ohlcv", coinId], 
+        () => fetchCoinHistory(coinId),
+        {
+            refetchInterval: 10000,
+        }
+        );
     return <div>{isLoading ? "Loading chart..." : (<ApexChart 
         type="line"
         series={[
@@ -60,6 +66,18 @@ function Chart({coinId} : CharProps) {
                 axisTicks: {
                     show: false
                 },
+                type:"datetime",
+                categories: data?.map((price) => new Date(price.time_close * 1000).toUTCString()) ?? [],
+            },
+            fill: {
+                type : "gradient",
+                gradient: { gradientToColors: ["#fbc531"], stops: [0, 100]},
+            },
+            colors: ["#e84118"],
+            tooltip: {
+                y: {
+                    formatter: (value) => `${value.toFixed(3)}`
+                }
             }
         }}
         />
