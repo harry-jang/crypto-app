@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/crypto-app/static/js/main.b243c094.js",
+    "main.js": "/crypto-app/static/js/main.dc78694f.js",
     "index.html": "/crypto-app/index.html",
-    "main.b243c094.js.map": "/crypto-app/static/js/main.b243c094.js.map"
+    "main.dc78694f.js.map": "/crypto-app/static/js/main.dc78694f.js.map"
   },
   "entrypoints": [
-    "static/js/main.b243c094.js"
+    "static/js/main.dc78694f.js"
   ]
 }
